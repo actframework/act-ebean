@@ -69,6 +69,7 @@ public final class EbeanService extends JpaDbService {
     @Override
     protected void configured() {
         ebeanConfig = new EbeanConfigAdaptor().adaptFrom(this.config, this);
+        app().eventBus().trigger(new EbeanConfigLoaded(ebeanConfig));
         ebean = EbeanServerFactory.create(ebeanConfig);
     }
 
