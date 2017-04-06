@@ -17,9 +17,6 @@ import org.osgl.util.S;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.sql.DataSource;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintStream;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -41,26 +38,15 @@ public final class EbeanService extends JpaDbService {
         final String agentPackage = null == s ? S.string(app().config().get(AppConfigKey.SCAN_PACKAGE)) : S.string(s).trim();
         E.invalidConfigurationIf(S.blank(agentPackage), "\"agentPackage\" not configured");
         _logger.info("\"agentPackage\" configured: %s", agentPackage);
-        app.eventBus().bind(PRE_LOAD_CLASSES, new AppEventListenerBase(S.builder(dbId).append("-ebean-pre-cl")) {
+        app.eventBus().bind(PRE_LOAD_CLASSES, new AppEventListenerBase(S.concat(dbId, "-ebean-pre-cl")) {
             @Override
             public void on(EventObject event) {
                 String s = S.buffer("debug=").append(Act.isDev() ? "1" : "0")
                         .append(";packages=")
                         .append(agentPackage)
                         .toString();
-                PrintStream ps = System.out;
-                try {
-                    System.setOut(new PrintStream(new OutputStream() {
-                        @Override
-                        public void write(int b) throws IOException {
-                            // ignore
-                        }
-                    }));
-                    if (!EbeanAgentLoader.loadAgentFromClasspath("ebean-agent", s)) {
-                        _logger.warn("ebean-agent not found in classpath - not dynamically loaded");
-                    }
-                } finally {
-                    System.setOut(ps);
+                if (!EbeanAgentLoader.loadAgentFromClasspath("ebean-agent", s)) {
+                    _logger.warn("ebean-agent not found in classpath - not dynamically loaded");
                 }
             }
         });
@@ -94,7 +80,7 @@ public final class EbeanService extends JpaDbService {
         if (EbeanModelBase.class.isAssignableFrom(modelType)) {
             Type type = modelType.getGenericSuperclass();
             if (type instanceof ParameterizedType) {
-                return $.cast(new EbeanDao((Class)((ParameterizedType) type).getActualTypeArguments()[0], modelType, this));
+                return $.cast(new EbeanDao((Class) ((ParameterizedType) type).getActualTypeArguments()[0], modelType, this));
             }
         }
         Class<?> idType = findModelIdTypeByAnnotation(modelType, Id.class);

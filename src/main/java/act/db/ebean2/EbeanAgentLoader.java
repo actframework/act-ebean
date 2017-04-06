@@ -1,5 +1,7 @@
 package act.db.ebean2;
 
+import act.Act;
+import act.app.event.AppEventId;
 import com.sun.tools.attach.AttachNotSupportedException;
 import com.sun.tools.attach.VirtualMachine;
 import com.sun.tools.attach.VirtualMachineDescriptor;
@@ -12,6 +14,8 @@ import sun.tools.attach.WindowsVirtualMachine;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.lang.management.ManagementFactory;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -79,7 +83,22 @@ public class EbeanAgentLoader extends AgentLoader {
                 vm = VirtualMachine.attach(pid);
             }
 
-            vm.loadAgent(jarFilePath, params);
+            final PrintStream ps = System.out;
+            try {
+                System.setOut(new PrintStream(new OutputStream() {
+                    @Override
+                    public void write(int b) throws IOException {
+                        // do nothing here
+                    }
+                }));
+                vm.loadAgent(jarFilePath, params);
+            } finally {
+                // ensure ebean2 EnhanceContext logout set to dump output
+                Act.jobManager().on(AppEventId.CLASS_LOADER_INITIALIZED, () -> {
+                    System.setOut(ps);
+                });
+                System.setOut(ps);
+            }
             vm.detach();
 
         } catch (Exception e) {

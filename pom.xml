@@ -158,12 +158,6 @@
       <groupId>org.actframework</groupId>
       <artifactId>act-jpa-common</artifactId>
       <version>${act-jpa-common.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.avaje.ebean</groupId>
-          <artifactId>ebean</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
 
     <dependency>
