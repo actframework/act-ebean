@@ -27,7 +27,7 @@
   <groupId>org.actframework</groupId>
   <artifactId>act-ebean2</artifactId>
   <packaging>jar</packaging>
-  <version>1.0.0</version>
+  <version>1.0.1-SNAPSHOT</version>
 
   <name>ACT Ebean (For JDK 8+)</name>
   <description>The Ebean Plugin for Actframework SQL database access</description>
