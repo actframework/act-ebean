@@ -5,7 +5,7 @@ import act.app.App;
 import act.conf.AppConfigKey;
 import act.db.Dao;
 import act.db.ebean2.util.EbeanConfigAdaptor;
-import act.db.jpa.JpaDbService;
+import act.db.sql.SqlDbService;
 import act.event.AppEventListenerBase;
 import io.ebean.EbeanServer;
 import io.ebean.EbeanServerFactory;
@@ -25,7 +25,7 @@ import java.util.Map;
 
 import static act.app.event.AppEventId.PRE_LOAD_CLASSES;
 
-public final class EbeanService extends JpaDbService {
+public final class EbeanService extends SqlDbService {
 
     // the ebean service instance
     private EbeanServer ebean;
@@ -50,6 +50,11 @@ public final class EbeanService extends JpaDbService {
                 }
             }
         });
+    }
+
+    @Override
+    protected boolean supportDdl() {
+        return true;
     }
 
     @Override

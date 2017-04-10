@@ -36,9 +36,9 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <git.url>git@github.com:actframework/act-ebean.git</git.url>
-    <act.version>1.1.0-SNAPSHOT</act.version>
-    <act-jpa-common.version>1.0.0-SNAPSHOT</act-jpa-common.version>
+    <git.url>git@github.com:actframework/act-ebean2.git</git.url>
+    <act.version>1.1.0</act.version>
+    <act-sql-common.version>1.0.0</act-sql-common.version>
     <ebean.version>10.2.1</ebean.version>
     <ebean-agent.version>10.1.7</ebean-agent.version>
     <ebean-agent-loader.version>2.1.2</ebean-agent-loader.version>
@@ -156,8 +156,8 @@
 
     <dependency>
       <groupId>org.actframework</groupId>
-      <artifactId>act-jpa-common</artifactId>
-      <version>${act-jpa-common.version}</version>
+      <artifactId>act-sql-common</artifactId>
+      <version>${act-sql-common.version}</version>
     </dependency>
 
     <dependency>
