@@ -2,40 +2,33 @@ package act.db.ebean2;
 
 import act.Act;
 import act.app.event.AppEventId;
+import act.sys.Env;
 import com.sun.tools.attach.AttachNotSupportedException;
 import com.sun.tools.attach.VirtualMachine;
 import com.sun.tools.attach.VirtualMachineDescriptor;
 import com.sun.tools.attach.spi.AttachProvider;
 import org.avaje.agentloader.AgentLoader;
+import org.osgl.logging.LogManager;
+import org.osgl.logging.Logger;
+import org.osgl.util.S;
 import sun.tools.attach.BsdVirtualMachine;
 import sun.tools.attach.LinuxVirtualMachine;
 import sun.tools.attach.SolarisVirtualMachine;
 import sun.tools.attach.WindowsVirtualMachine;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.lang.management.ManagementFactory;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class EbeanAgentLoader extends AgentLoader {
 
 
-    private static final Logger log = Logger.getLogger(AgentLoader.class.getName());
+    private static final Logger LOGGER = LogManager.get(EbeanAgentLoader.class.getName());
 
     private static final List<String> loaded = new ArrayList<String>();
-
-    private static final String discoverPid() {
-        String nameOfRunningVM = ManagementFactory.getRuntimeMXBean().getName();
-        int p = nameOfRunningVM.indexOf('@');
-        return nameOfRunningVM.substring(0, p);
-    }
 
     private static final AttachProvider ATTACH_PROVIDER = new AttachProvider() {
         @Override
@@ -70,11 +63,9 @@ public class EbeanAgentLoader extends AgentLoader {
      * Load an agent providing the full file path with parameters.
      */
     public static void loadAgent(String jarFilePath, String params) {
-
-        log.info("dynamically loading javaagent for " + jarFilePath);
         try {
 
-            String pid = discoverPid();
+            String pid = Env.PID.get();
 
             VirtualMachine vm;
             if (AttachProvider.providers().isEmpty()) {
@@ -85,19 +76,16 @@ public class EbeanAgentLoader extends AgentLoader {
 
             final PrintStream ps = System.out;
             try {
-                System.setOut(new PrintStream(new OutputStream() {
-                    @Override
-                    public void write(int b) throws IOException {
-                        // do nothing here
-                    }
-                }));
+                System.setOut(new PrintStream(new FileOutputStream(".ebean_agent.log")));
                 vm.loadAgent(jarFilePath, params);
+                if (LOGGER.isTraceEnabled()) {
+                    LOGGER.trace("javaagent loaded: " + jarFilePath);
+                }
             } finally {
                 // ensure ebean2 EnhanceContext logout set to dump output
                 Act.jobManager().on(AppEventId.CLASS_LOADER_INITIALIZED, () -> {
                     System.setOut(ps);
                 });
-                System.setOut(ps);
             }
             vm.detach();
 
@@ -119,6 +107,9 @@ public class EbeanAgentLoader extends AgentLoader {
     public synchronized static boolean loadAgentFromClasspath(String agentName, String params) {
 
         if (loaded.contains(agentName)) {
+            if (LOGGER.isDebugEnabled()) {
+                LOGGER.debug(S.concat("agent already loaded: ", agentName));
+            }
             // the agent is already loaded
             return true;
         }
@@ -137,6 +128,9 @@ public class EbeanAgentLoader extends AgentLoader {
                         if (fullName.startsWith("/") && isWindows()) {
                             fullName = fullName.substring(1);
                         }
+                        if (LOGGER.isTraceEnabled()) {
+                            LOGGER.trace(S.concat("loading agent: ", fullName));
+                        }
                         loadAgent(fullName, params);
                         loaded.add(fullName);
                         return true;
@@ -145,6 +139,9 @@ public class EbeanAgentLoader extends AgentLoader {
             }
 
             // Agent not found and not loaded
+            if (LOGGER.isTraceEnabled()) {
+                LOGGER.trace("agent not found");
+            }
             return false;
 
         } catch (URISyntaxException use) {
