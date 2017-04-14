@@ -105,7 +105,6 @@ public class EbeanAgentLoader extends AgentLoader {
      * Load the agent from the classpath using its name and passing params.
      */
     public synchronized static boolean loadAgentFromClasspath(String agentName, String params) {
-
         if (loaded.contains(agentName)) {
             if (LOGGER.isDebugEnabled()) {
                 LOGGER.debug(S.concat("agent already loaded: ", agentName));
@@ -132,7 +131,7 @@ public class EbeanAgentLoader extends AgentLoader {
                             LOGGER.trace(S.concat("loading agent: ", fullName));
                         }
                         loadAgent(fullName, params);
-                        loaded.add(fullName);
+                        loaded.add(agentName);
                         return true;
                     }
                 }
