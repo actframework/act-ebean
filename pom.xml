@@ -18,19 +18,20 @@
 ********************************************
 *            version history
 ********************************************
-1.0.3
+1.0.4
+- #6 NPE when no third party datasource configured
+- update act-sql-common to 1.0.2
 
+1.0.3
 - update act-sql-common to 1.0.1
 - #3 It doesn't start with MySQL jdbc driver 5.x
 - #4 Ebean Agent loaded twice if there are two ebean2 db services
 - #5 The datasource created in sql-common not used when creating ebean server
 
 1.0.2
-
 - #2 does not work when app start in PROD mode
 
 1.0.1
-
 - #1 It should use ebean's naming convention by default
 
 1.0.0 - baseline version
@@ -52,8 +53,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <git.url>git@github.com:actframework/act-ebean2.git</git.url>
-    <act.version>1.1.1</act.version>
-    <act-sql-common.version>1.0.1</act-sql-common.version>
+    <act.version>1.1.2</act.version>
+    <act-sql-common.version>1.0.2</act-sql-common.version>
     <ebean.version>10.2.1</ebean.version>
     <ebean-agent.version>10.1.7</ebean-agent.version>
     <ebean-agent-loader.version>2.1.2</ebean-agent-loader.version>

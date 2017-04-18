@@ -12,7 +12,6 @@ import org.osgl.logging.Logger;
 import org.osgl.util.S;
 
 import javax.inject.Singleton;
-import javax.sql.DataSource;
 import java.util.Properties;
 import java.util.Set;
 
@@ -30,12 +29,7 @@ public class EbeanConfigAdaptor {
         ServerConfig config = new ServerConfig();
 
         config.setName(svc.id());
-        DataSource dataSource = svc.dataSource();
-        if (null == dataSource) {
-            config.setDataSourceConfig(adaptFrom(actConfig.dataSourceConfig, svc));
-        } else {
-            config.setDataSource(svc.dataSource());
-        }
+        config.setDataSourceConfig(adaptFrom(actConfig.dataSourceConfig, svc));
 
         config.setDdlGenerate(actConfig.ddlGeneratorConfig.create);
         config.setDdlRun(actConfig.ddlGeneratorConfig.create);
