@@ -25,11 +25,11 @@ public class EbeanConfigAdaptor {
 
     private static final Logger LOGGER = LogManager.get(EbeanConfigAdaptor.class);
 
-    public ServerConfig adaptFrom(SqlDbServiceConfig actConfig, SqlDbService svc) {
+    public ServerConfig adaptFrom(SqlDbServiceConfig actConfig, act.db.sql.DataSourceConfig dsConfig,  SqlDbService svc) {
         ServerConfig config = new ServerConfig();
 
         config.setName(svc.id());
-        config.setDataSourceConfig(adaptFrom(actConfig.dataSourceConfig, svc));
+        config.setDataSourceConfig(adaptFrom(dsConfig, svc));
 
         config.setDdlGenerate(actConfig.ddlGeneratorConfig.create);
         config.setDdlRun(actConfig.ddlGeneratorConfig.create);

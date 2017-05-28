@@ -2,6 +2,7 @@ package act.db.ebean2;
 
 import act.db.Dao;
 import io.ebean.*;
+import org.jetbrains.annotations.Nullable;
 import org.osgl.$;
 import org.osgl.util.C;
 import org.osgl.util.E;
@@ -12,6 +13,7 @@ import java.lang.reflect.Type;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -358,6 +360,17 @@ public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODE
     @Override
     public int findCount() {
         return q.findCount();
+    }
+
+    @Nullable
+    @Override
+    public MODEL_TYPE findOne() {
+        return q.findOne();
+    }
+
+    @Override
+    public Optional<MODEL_TYPE> findOneOrEmpty() {
+        return q.findOneOrEmpty();
     }
 
     @Override

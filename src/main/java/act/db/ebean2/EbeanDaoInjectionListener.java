@@ -37,7 +37,7 @@ public class EbeanDaoInjectionListener extends DaoInjectionListenerBase {
         if (dbService instanceof EbeanService) {
             final EbeanService service = $.cast(dbService);
             final EbeanDao dao = $.cast(injectee);
-            Act.eventBus().bind(AppEventId.PRE_START, new AppEventListenerBase(S.concat(resolved._2, "-ebean-on-dao-injection")) {
+            Act.eventBus().bind(AppEventId.DB_SVC_LOADED, new AppEventListenerBase(S.concat(resolved._2, "-ebean-on-dao-injection")) {
                 @Override
                 public void on(EventObject eventObject) throws Exception {
                     dao.ebean(service.ebean());
