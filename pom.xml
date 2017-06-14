@@ -18,6 +18,10 @@
 ********************************************
 *            version history
 ********************************************
+1.1.1
+* #12 Don't provide `EbeanServer` to `EbeanDao` if it is already provided
+* #11 Suppress warning `cannot find job by id: __act_app__db_svc_loaded`
+
 1.1.0
 * catch up to act-1.4.0, act-sql-common-1.1.0
 
