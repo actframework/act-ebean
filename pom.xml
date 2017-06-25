@@ -18,6 +18,9 @@
 ********************************************
 *            version history
 ********************************************
+1.1.2
+* Catch up to act-sql-common-1.1.1
+
 1.1.1
 * #12 Don't provide `EbeanServer` to `EbeanDao` if it is already provided
 * #11 Suppress warning `cannot find job by id: __act_app__db_svc_loaded`
@@ -60,8 +63,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <git.url>git@github.com:actframework/act-ebean2.git</git.url>
-    <act.version>1.4.0</act.version>
-    <act-sql-common.version>1.1.0</act-sql-common.version>
+    <act.version>1.4.1</act.version>
+    <act-sql-common.version>1.1.1</act-sql-common.version>
     <ebean.version>10.3.1</ebean.version>
     <ebean-agent.version>10.1.7</ebean-agent.version>
     <ebean-agent-loader.version>2.1.2</ebean-agent-loader.version>
