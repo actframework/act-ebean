@@ -20,30 +20,27 @@ package act.db.ebean2.util;
  * #L%
  */
 
+import static act.db.sql.util.NamingConvention.Default.MATCHING;
+
 import act.db.sql.SqlDbService;
 import act.db.sql.SqlDbServiceConfig;
+import act.util.LogSupport;
 import io.ebean.config.MatchingNamingConvention;
 import io.ebean.config.NamingConvention;
 import io.ebean.config.ServerConfig;
 import io.ebean.config.UnderscoreNamingConvention;
 import org.avaje.datasource.DataSourceConfig;
-import org.osgl.logging.LogManager;
-import org.osgl.logging.Logger;
 import org.osgl.util.S;
 
-import javax.inject.Singleton;
 import java.util.Properties;
 import java.util.Set;
-
-import static act.db.sql.util.NamingConvention.Default.MATCHING;
+import javax.inject.Singleton;
 
 /**
  * Adapt {@link act.db.sql.SqlDbServiceConfig} to {@link ServerConfig}
  */
 @Singleton
-public class EbeanConfigAdaptor {
-
-    private static final Logger LOGGER = LogManager.get(EbeanConfigAdaptor.class);
+public class EbeanConfigAdaptor extends LogSupport {
 
     public ServerConfig adaptFrom(SqlDbServiceConfig actConfig, act.db.sql.DataSourceConfig dsConfig,  SqlDbService svc) {
         ServerConfig config = new ServerConfig();
@@ -60,8 +57,8 @@ public class EbeanConfigAdaptor {
         Set<Class> modelClasses = svc.modelClasses();
         if (null != modelClasses && !modelClasses.isEmpty()) {
             for (Class modelClass : modelClasses) {
-                if (LOGGER.isTraceEnabled()) {
-                    LOGGER.trace(S.concat("add model class into Ebean config: ", modelClass.getName()));
+                if (isTraceEnabled()) {
+                    trace(S.concat("add model class into Ebean config: ", modelClass.getName()));
                 }
                 config.addClass(modelClass);
             }

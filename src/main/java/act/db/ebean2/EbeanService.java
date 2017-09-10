@@ -20,6 +20,8 @@ package act.db.ebean2;
  * #L%
  */
 
+import static act.app.event.AppEventId.PRE_LOAD_CLASSES;
+
 import act.Act;
 import act.app.App;
 import act.conf.AppConfigKey;
@@ -32,25 +34,22 @@ import io.ebean.EbeanServer;
 import io.ebean.EbeanServerFactory;
 import io.ebean.config.ServerConfig;
 import org.osgl.$;
-import org.osgl.logging.LogManager;
-import org.osgl.logging.Logger;
+import org.osgl.bootstrap.Version;
 import org.osgl.util.E;
 import org.osgl.util.S;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.sql.DataSource;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.EventObject;
 import java.util.Map;
-
-import static act.app.event.AppEventId.PRE_LOAD_CLASSES;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.sql.DataSource;
 
 public final class EbeanService extends SqlDbService {
 
-    private final Logger LOGGER = LogManager.get(EbeanService.class);
+    public static final Version VERSION = EbeanPlugin.VERSION;
 
     // the ebean service instance
     private EbeanServer ebean;
@@ -62,8 +61,8 @@ public final class EbeanService extends SqlDbService {
         String s = config.get("agentPackage");
         final String agentPackage = null == s ? S.string(app().config().get(AppConfigKey.SCAN_PACKAGE)) : S.string(s).trim();
         E.invalidConfigurationIf(S.blank(agentPackage), "\"agentPackage\" not configured");
-        if (LOGGER.isTraceEnabled()) {
-            LOGGER.trace("\"agentPackage\" configured: %s", agentPackage);
+        if (isTraceEnabled()) {
+            trace("\"agentPackage\" configured: %s", agentPackage);
         }
         app.eventBus().bind(PRE_LOAD_CLASSES, new AppEventListenerBase(S.concat(dbId, "-ebean-pre-cl")) {
             @Override
@@ -73,7 +72,7 @@ public final class EbeanService extends SqlDbService {
                         .append(agentPackage)
                         .toString();
                 if (!EbeanAgentLoader.loadAgentFromClasspath("ebean-agent", s)) {
-                    LOGGER.warn("ebean-agent not found in classpath - not dynamically loaded");
+                    warn("ebean-agent not found in classpath - not dynamically loaded");
                 }
             }
         });

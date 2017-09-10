@@ -24,10 +24,14 @@ import act.app.App;
 import act.db.DbPlugin;
 import act.db.DbService;
 import act.inject.param.ParamValueLoaderService;
+import org.osgl.bootstrap.Version;
 
 import java.util.Map;
 
 public class EbeanPlugin extends DbPlugin {
+
+    public static final Version VERSION = Version.of(EbeanPlugin.class);
+
     @Override
     public DbService initDbService(String id, App app, Map<String, String> conf) {
         ParamValueLoaderService.waiveFields("_ebean_intercept", "_ebean_identity");
