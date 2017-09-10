@@ -64,10 +64,6 @@ public class EbeanConfigAdaptor extends LogSupport {
             }
         }
 
-        // Very important as ebean will
-        // manipuate ddl generating behavior without this
-        config.setH2ProductionMode(true);
-
         return config;
     }
 
