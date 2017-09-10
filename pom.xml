@@ -23,9 +23,9 @@
   <packaging>jar</packaging>
   <version>1.1.4-SNAPSHOT</version>
 
-  <name>ACT AAA Plugin</name>
-  <description>Provides Authentication/Authorization/Accounting service for Actframework based on osgl-aaa</description>
-  <url>http://actframework.org/plugin/morphia</url>
+  <name>ACT Ebean2</name>
+  <description>Provides SQL database access through Ebean ORM library (Java 8+)</description>
+  <url>http://actframework.org/plugin/ebean2</url>
   <inceptionYear>2015</inceptionYear>
 
   <organization>

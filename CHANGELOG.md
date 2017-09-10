@@ -1,7 +1,9 @@
 # act-ebean2 CHANGELOG
 
 1.1.2
-* Catch up to act-sql-common-1.1.1
+* update to act-1.4.11, act-sql-common-1.1.1
+* apply oslg-bootstrap version mechanism
+* improve maven build process
 
 1.1.1
 * Don't provide `EbeanServer` to `EbeanDao` if it is already provided #12 
