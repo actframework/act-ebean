@@ -22,6 +22,7 @@ package act.db.jpa;
 
 import act.db.EntityClassRepository;
 import act.util.AnnotatedClassFinder;
+import act.util.SingletonBase;
 import org.osgl.$;
 
 import javax.inject.Inject;
@@ -30,9 +31,9 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Singleton
-public final class EntityFinder {
+public final class EntityFinder extends SingletonBase {
 
-    private final EntityClassRepository repo;
+    private EntityClassRepository repo;
 
     @Inject
     public EntityFinder(EntityClassRepository repo) {
@@ -41,12 +42,22 @@ public final class EntityFinder {
 
     @AnnotatedClassFinder(Entity.class)
     public void foundEntity(Class<?> entityClass) {
+        if (isTraceEnabled()) {
+            trace("found entity class: %s", entityClass);
+        }
         repo.registerModelClass(entityClass);
     }
 
     @AnnotatedClassFinder(Table.class)
     public void foundTable(Class<?> tableClass) {
+        if (isTraceEnabled()) {
+            trace("found table class: %s", tableClass);
+        }
         repo.registerModelClass(tableClass);
     }
 
+    @Override
+    protected void releaseResources() {
+        repo = null;
+    }
 }

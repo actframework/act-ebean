@@ -30,6 +30,7 @@ import com.sun.tools.attach.spi.AttachProvider;
 import org.avaje.agentloader.AgentLoader;
 import org.osgl.logging.LogManager;
 import org.osgl.logging.Logger;
+import org.osgl.util.IO;
 import org.osgl.util.S;
 import sun.tools.attach.BsdVirtualMachine;
 import sun.tools.attach.LinuxVirtualMachine;
@@ -95,8 +96,9 @@ public class EbeanAgentLoader extends AgentLoader {
             }
 
             final PrintStream ps = System.out;
+            final FileOutputStream os = new FileOutputStream(".ebean_agent.log");
             try {
-                System.setOut(new PrintStream(new FileOutputStream(".ebean_agent.log")));
+                System.setOut(new PrintStream(os));
                 vm.loadAgent(jarFilePath, params);
                 if (LOGGER.isTraceEnabled()) {
                     LOGGER.trace("javaagent loaded: " + jarFilePath);
@@ -105,6 +107,7 @@ public class EbeanAgentLoader extends AgentLoader {
                 // ensure ebean2 EnhanceContext logout set to dump output
                 Act.jobManager().on(AppEventId.CLASS_LOADER_INITIALIZED, () -> {
                     System.setOut(ps);
+                    IO.close(os);
                 });
             }
             vm.detach();
