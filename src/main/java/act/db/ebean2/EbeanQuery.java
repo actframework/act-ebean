@@ -221,6 +221,11 @@ public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODE
     }
 
     @Override
+    public Query<MODEL_TYPE> setUseQueryCache(CacheMode useQueryCache) {
+        return q.setUseQueryCache(useQueryCache);
+    }
+
+    @Override
     public RawSql getRawSql() {
         return q.getRawSql();
     }

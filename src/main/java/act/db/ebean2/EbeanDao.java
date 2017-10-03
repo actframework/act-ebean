@@ -244,18 +244,7 @@ public class EbeanDao<ID_TYPE, MODEL_TYPE> extends DaoBase<ID_TYPE, MODEL_TYPE, 
         if (list.isEmpty()) {
             return list;
         }
-        Transaction transaction = ebean().createTransaction(TxIsolation.READ_COMMITED);
-        transaction.setBatchMode(true);
-        transaction.setBatchSize(list.size());
-        try {
-            ebean().saveAll(list);
-            transaction.commit();
-        } catch (RuntimeException e) {
-            transaction.rollback();
-            throw e;
-        } finally {
-            transaction.end();
-        }
+        ebean().saveAll(list);
         return list;
     }
 
