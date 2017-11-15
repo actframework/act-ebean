@@ -1,5 +1,10 @@
 # act-ebean2 CHANGELOG
 
+1.1.5
+* update act to 1.5.1
+* update act-sql-common to 1.1.3
+* update ebean to 11.5.1
+
 1.1.2
 * update to act-1.4.11, act-sql-common-1.1.1
 * apply oslg-bootstrap version mechanism

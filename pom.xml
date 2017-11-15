@@ -62,12 +62,12 @@
     <osgl-bootstrap.version>1.0.0-BETA-7</osgl-bootstrap.version>
     <osgl-ut.version>1.0.0-BETA-4</osgl-ut.version>
 
-    <ebean.version>10.4.7</ebean.version>
-    <ebean-agent.version>11.1.1</ebean-agent.version>
+    <ebean.version>11.5.1</ebean.version>
+    <ebean-agent.version>11.5.1</ebean-agent.version>
     <ebean-agent-loader.version>2.1.2</ebean-agent-loader.version>
 
-    <act.version>1.4.11</act.version>
-    <act-sql-common.version>1.1.2</act-sql-common.version>
+    <act.version>1.5.1</act.version>
+    <act-sql-common.version>1.1.3</act-sql-common.version>
 
   </properties>
 

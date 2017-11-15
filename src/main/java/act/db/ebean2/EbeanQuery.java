@@ -22,7 +22,6 @@ package act.db.ebean2;
 
 import act.db.Dao;
 import io.ebean.*;
-import org.jetbrains.annotations.Nullable;
 import org.osgl.$;
 import org.osgl.util.C;
 import org.osgl.util.E;
@@ -69,8 +68,9 @@ public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODE
     }
 
     @Override
-    public Query<MODEL_TYPE> asOf(Timestamp timestamp) {
-        return q.asOf(timestamp);
+    public EbeanQuery<MODEL_TYPE> asOf(Timestamp timestamp) {
+        q.asOf(timestamp);
+        return this;
     }
 
     @Override
@@ -84,8 +84,9 @@ public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODE
     }
 
     @Override
-    public Query<MODEL_TYPE> apply(FetchPath fetchPath) {
-        return q.apply(fetchPath);
+    public EbeanQuery<MODEL_TYPE> apply(FetchPath fetchPath) {
+        q.apply(fetchPath);
+        return this;
     }
 
     @Override
@@ -94,7 +95,7 @@ public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODE
     }
 
     @Override
-    public Query<MODEL_TYPE> setUseDocStore(boolean b) {
+    public EbeanQuery<MODEL_TYPE> setUseDocStore(boolean b) {
         q.setUseDocStore(b);
         return this;
     }
@@ -120,8 +121,9 @@ public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODE
     }
 
     @Override
-    public Query<MODEL_TYPE> setDisableLazyLoading(boolean b) {
-        return q.setDisableLazyLoading(b);
+    public EbeanQuery<MODEL_TYPE> setDisableLazyLoading(boolean b) {
+        q.setDisableLazyLoading(b);
+        return this;
     }
 
     @Override
@@ -145,27 +147,31 @@ public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODE
 
     @Override
     public MODEL_TYPE first() {
-        return q.findUnique();
+        return q.findOne();
     }
 
     @Override
-    public Query<MODEL_TYPE> fetchQuery(String path, String fetchProperties) {
-        return q.fetchQuery(path, fetchProperties);
+    public EbeanQuery<MODEL_TYPE> fetchQuery(String path, String fetchProperties) {
+        q.fetchQuery(path, fetchProperties);
+        return this;
     }
 
     @Override
-    public Query<MODEL_TYPE> fetchLazy(String path, String fetchProperties) {
-        return q.fetchLazy(path, fetchProperties);
+    public EbeanQuery<MODEL_TYPE> fetchLazy(String path, String fetchProperties) {
+        q.fetchLazy(path, fetchProperties);
+        return this;
     }
 
     @Override
-    public Query<MODEL_TYPE> fetchQuery(String path) {
-        return q.fetchQuery(path);
+    public EbeanQuery<MODEL_TYPE> fetchQuery(String path) {
+        q.fetchQuery(path);
+        return this;
     }
 
     @Override
-    public Query<MODEL_TYPE> fetchLazy(String path) {
-        return q.fetchLazy(path);
+    public EbeanQuery<MODEL_TYPE> fetchLazy(String path) {
+        q.fetchLazy(path);
+        return this;
     }
 
     @Override
@@ -195,14 +201,15 @@ public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODE
 
 
     @Override
-    public Query<MODEL_TYPE> setIncludeSoftDeletes() {
+    public EbeanQuery<MODEL_TYPE> setIncludeSoftDeletes() {
         q.setIncludeSoftDeletes();
         return this;
     }
 
     @Override
-    public Query<MODEL_TYPE> asDraft() {
-        return q.asDraft();
+    public EbeanQuery<MODEL_TYPE> asDraft() {
+        q.asDraft();
+        return this;
     }
 
     @Override
@@ -211,23 +218,27 @@ public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODE
     }
 
     @Override
-    public Query<MODEL_TYPE> setAutoTune(boolean b) {
-        return q.setAutoTune(b);
+    public EbeanQuery<MODEL_TYPE> setAutoTune(boolean b) {
+        q.setAutoTune(b);
+        return this;
     }
 
     @Override
-    public Query<MODEL_TYPE> setDisableReadAuditing() {
-        return q.setDisableReadAuditing();
+    public EbeanQuery<MODEL_TYPE> setDisableReadAuditing() {
+        q.setDisableReadAuditing();
+        return this;
     }
 
     @Override
-    public Query<MODEL_TYPE> setUseQueryCache(CacheMode useQueryCache) {
-        return q.setUseQueryCache(useQueryCache);
+    public EbeanQuery<MODEL_TYPE> setUseQueryCache(CacheMode useQueryCache) {
+        q.setUseQueryCache(useQueryCache);
+        return this;
     }
 
     @Override
-    public RawSql getRawSql() {
-        return q.getRawSql();
+    public EbeanQuery<MODEL_TYPE> setProfileId(int i) {
+        q.setProfileId(i);
+        return this;
     }
 
     @Override
@@ -378,16 +389,10 @@ public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODE
     }
 
     @Override
-    public MODEL_TYPE findUnique() {
-        return q.findUnique();
-    }
-
-    @Override
     public int findCount() {
         return q.findCount();
     }
 
-    @Nullable
     @Override
     public MODEL_TYPE findOne() {
         return q.findOne();
