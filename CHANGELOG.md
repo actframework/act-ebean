@@ -1,5 +1,9 @@
 # act-ebean2 CHANGELOG
 
+1.2.0
+* update act to 1.6.0
+* update act-sql-common to 1.2.0
+
 1.1.5
 * update act to 1.5.1
 * update act-sql-common to 1.1.3

@@ -23,9 +23,7 @@ package act.db.ebean2;
 import static act.Act.app;
 
 import act.app.DbServiceManager;
-import act.db.DB;
-import act.db.DaoBase;
-import act.db.DbService;
+import act.db.*;
 import act.db.Model;
 import act.inject.param.NoBind;
 import act.util.General;
@@ -164,6 +162,16 @@ public class EbeanDao<ID_TYPE, MODEL_TYPE> extends DaoBase<ID_TYPE, MODEL_TYPE, 
     @Override
     public MODEL_TYPE findById(ID_TYPE id) {
         return ebean().find(modelType(), id);
+    }
+
+    @Override
+    public MODEL_TYPE findLatest() {
+        throw E.unsupport();
+    }
+
+    @Override
+    public MODEL_TYPE findLastModified() {
+        throw E.unsupport();
     }
 
     @Override

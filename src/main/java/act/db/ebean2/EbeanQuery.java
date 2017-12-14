@@ -74,6 +74,11 @@ public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODE
     }
 
     @Override
+    public <A> A findSingleAttribute() {
+        return q.findSingleAttribute();
+    }
+
+    @Override
     public List<Version<MODEL_TYPE>> findVersions() {
         return q.findVersions();
     }
@@ -97,6 +102,12 @@ public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODE
     @Override
     public EbeanQuery<MODEL_TYPE> setUseDocStore(boolean b) {
         q.setUseDocStore(b);
+        return this;
+    }
+
+    @Override
+    public Query<MODEL_TYPE> setBeanCacheMode(CacheMode beanCacheMode) {
+        q.setBeanCacheMode(beanCacheMode);
         return this;
     }
 
