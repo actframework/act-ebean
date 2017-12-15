@@ -62,7 +62,7 @@
     <osgl-bootstrap.version>1.0.0-BETA-7</osgl-bootstrap.version>
     <osgl-ut.version>1.0.0-BETA-4</osgl-ut.version>
 
-    <ebean.version>11.6.1</ebean.version>
+    <ebean.version>11.7.1</ebean.version>
     <ebean-agent.version>11.5.1</ebean-agent.version>
     <ebean-agent-loader.version>2.1.2</ebean-agent-loader.version>
 
