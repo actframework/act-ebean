@@ -36,14 +36,14 @@
   <parent>
     <groupId>org.actframework</groupId>
     <artifactId>parent</artifactId>
-    <version>1.6.0</version>
+    <version>1.6.2</version>
   </parent>
 
   <properties>
     <scm.url>git@github.com:actframework/act-ebean2.git</scm.url>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <ebean.version>11.7.1</ebean.version>
+    <ebean.version>11.8.1</ebean.version>
     <ebean-agent.version>11.5.1</ebean-agent.version>
     <ebean-agent-loader.version>2.1.2</ebean-agent-loader.version>
 

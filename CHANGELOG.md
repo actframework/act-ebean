@@ -1,5 +1,8 @@
 # act-ebean2 CHANGELOG
 
+1.2.1
+* add `@BindOn` annotation to `EbeanConfigLoaded` event to allow early binding of listeners
+
 1.2.0
 * update act to 1.6.0
 * update act-sql-common to 1.2.0
