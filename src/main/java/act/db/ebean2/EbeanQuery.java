@@ -112,6 +112,12 @@ public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODE
     }
 
     @Override
+    public Query<MODEL_TYPE> setProfileLocation(ProfileLocation profileLocation) {
+        q.setProfileLocation(profileLocation);
+        return this;
+    }
+
+    @Override
     public int update() {
         return q.update();
     }
