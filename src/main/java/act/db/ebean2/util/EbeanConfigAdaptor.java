@@ -32,6 +32,7 @@ import io.ebean.config.UnderscoreNamingConvention;
 import org.avaje.datasource.DataSourceConfig;
 import org.osgl.util.S;
 
+import java.sql.Connection;
 import java.util.Properties;
 import java.util.Set;
 import javax.inject.Singleton;
@@ -70,6 +71,7 @@ public class EbeanConfigAdaptor extends LogSupport {
     public DataSourceConfig adaptFrom(act.db.sql.DataSourceConfig actConfig, SqlDbService svc) {
         Properties properties = new Properties();
         properties.putAll(actConfig.customProperties);
+        properties.put("isolationLevel", adaptIsolationLevel(actConfig.isolationLevel));
         DataSourceConfig config = new DataSourceConfig();
         config.loadSettings(properties, svc.id());
 
@@ -110,4 +112,16 @@ public class EbeanConfigAdaptor extends LogSupport {
         return new UnderscoreNamingConvention();
     }
 
+    private String adaptIsolationLevel(int level) {
+        switch (level) {
+            case Connection.TRANSACTION_NONE : return "NONE";
+            case Connection.TRANSACTION_READ_COMMITTED : return "READ_COMMITTED";
+            case Connection.TRANSACTION_READ_UNCOMMITTED : return "READ_UNCOMMITTED";
+            case Connection.TRANSACTION_REPEATABLE_READ : return "REPEATABLE_READ";
+            case Connection.TRANSACTION_SERIALIZABLE : return "SERIALIZABLE";
+            default:
+                warn("Unknown isolationLevel found: %s; will use default level: REPEATABLE_READ");
+                return "REPEATABLE_READ";
+        }
+    }
 }
