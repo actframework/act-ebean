@@ -20,7 +20,7 @@ package act.db.ebean2;
  * #L%
  */
 
-import static act.app.event.AppEventId.DEPENDENCY_INJECTOR_PROVISIONED;
+import static act.app.event.SysEventId.DEPENDENCY_INJECTOR_PROVISIONED;
 
 import act.event.ActEvent;
 import act.event.BindOn;

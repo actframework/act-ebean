@@ -20,7 +20,7 @@ package act.db.ebean2;
  * #L%
  */
 
-import static act.app.event.AppEventId.PRE_LOAD_CLASSES;
+import static act.app.event.SysEventId.PRE_LOAD_CLASSES;
 
 import act.Act;
 import act.app.App;
@@ -29,7 +29,7 @@ import act.db.Dao;
 import act.db.ebean2.util.EbeanConfigAdaptor;
 import act.db.sql.DataSourceConfig;
 import act.db.sql.SqlDbService;
-import act.event.AppEventListenerBase;
+import act.event.SysEventListenerBase;
 import io.ebean.EbeanServer;
 import io.ebean.EbeanServerFactory;
 import io.ebean.config.ServerConfig;
@@ -64,7 +64,7 @@ public final class EbeanService extends SqlDbService {
         if (isTraceEnabled()) {
             trace("\"agentPackage\" configured: %s", agentPackage);
         }
-        app.eventBus().bind(PRE_LOAD_CLASSES, new AppEventListenerBase(S.concat(dbId, "-ebean-pre-cl")) {
+        app.eventBus().bind(PRE_LOAD_CLASSES, new SysEventListenerBase(S.concat(dbId, "-ebean-pre-cl")) {
             @Override
             public void on(EventObject event) {
                 String s = S.buffer("debug=").append(Act.isDev() ? "1" : "0")
