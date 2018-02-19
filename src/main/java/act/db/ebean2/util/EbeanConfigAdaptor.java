@@ -55,7 +55,7 @@ public class EbeanConfigAdaptor extends LogSupport {
 
         config.setNamingConvention(namingConvention(actConfig));
 
-        Set<Class> modelClasses = svc.modelClasses();
+        Set<Class> modelClasses = svc.entityClasses();
         if (null != modelClasses && !modelClasses.isEmpty()) {
             for (Class modelClass : modelClasses) {
                 if (isTraceEnabled()) {

@@ -43,6 +43,7 @@ public class EbeanPlugin extends DbPlugin {
 
     @Override
     protected void applyTo(App app) {
+        super.applyTo(app);
         app.eventBus().bind(TxStart.class, new ActEventListenerBase<TxStart>() {
             @Override
             public void on(TxStart eventObject) {
