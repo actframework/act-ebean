@@ -362,7 +362,7 @@ public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODE
     }
 
     @Override
-    public List<Object> findIds() {
+    public <A> List<A> findIds() {
         return q.findIds();
     }
 
@@ -371,6 +371,28 @@ public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODE
         QueryIterator<MODEL_TYPE> i = q.findIterate();
         dao.registerQueryIterator(i);
         return i;
+    }
+
+    @Override
+    public boolean isCountDistinct() {
+        return q.isCountDistinct();
+    }
+
+    @Override
+    public Query<MODEL_TYPE> setCountDistinct(CountDistinctOrder countDistinctOrder) {
+        q.setCountDistinct(countDistinctOrder);
+        return this;
+    }
+
+    @Override
+    public QueryType getQueryType() {
+        return q.getQueryType();
+    }
+
+    @Override
+    public Query<MODEL_TYPE> orderById(boolean b) {
+        q.orderById(b);
+        return this;
     }
 
     public void consume($.Visitor<MODEL_TYPE> visitor) {
