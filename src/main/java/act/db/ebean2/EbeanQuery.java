@@ -637,4 +637,9 @@ public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODE
     public Set<String> validate() {
         return q.validate();
     }
+
+    @Override
+    public <D> DtoQuery<D> asDto(Class<D> aClass) {
+        return q.asDto(aClass);
+    }
 }
