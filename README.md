@@ -12,7 +12,7 @@ Ebean plugin for ACT Framework.
 ## act-ebean vs act-ebean2
 
 * act-ebean: support JDK7 and JDK8
-* act-ebean2: uses latest ebean version but can only run on JDK8
+* act-ebean: uses latest ebean version but can only run on JDK8
  
 ## Versions
 

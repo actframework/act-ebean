@@ -1,4 +1,4 @@
-package act.db.ebean2;
+package act.db.ebean;
 
 /*-
  * #%L
@@ -104,7 +104,7 @@ public class EbeanAgentLoader extends AgentLoader {
                     LOGGER.trace("javaagent loaded: " + jarFilePath);
                 }
             } finally {
-                // ensure ebean2 EnhanceContext logout set to dump output
+                // ensure ebean EnhanceContext logout set to dump output
                 Act.jobManager().on(SysEventId.CLASS_LOADER_INITIALIZED, () -> {
                     System.setOut(ps);
                     IO.close(os);

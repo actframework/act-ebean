@@ -1,4 +1,4 @@
-package act.db.ebean2.util;
+package act.db.ebean.util;
 
 /*-
  * #%L
@@ -22,7 +22,7 @@ package act.db.ebean2.util;
 
 import act.app.App;
 import act.app.DbServiceManager;
-import act.db.ebean2.EbeanDao;
+import act.db.ebean.EbeanDao;
 import org.osgl.inject.BeanSpec;
 import org.osgl.inject.GenericTypedBeanLoader;
 

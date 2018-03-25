@@ -1,5 +1,8 @@
 # act-ebean2 CHANGELOG
 
+1.6.1 - 25/Mar/2018
+* rename package from `act.ebean2` to `act.ebean`
+
 1.6.0 - 25/Mar/2018
 * rename to act-ebean
 * update act to 1.8.2
@@ -55,7 +58,7 @@
 1.0.3
 - update act-sql-common to 1.0.1
 - It doesn't start with MySQL jdbc driver 5.x #3 
-- Ebean Agent loaded twice if there are two ebean2 db services #4 
+- Ebean Agent loaded twice if there are two ebean db services #4
 - The datasource created in sql-common not used when creating ebean server #5 
 
 1.0.2

@@ -1,4 +1,4 @@
-package act.db.ebean2;
+package act.db.ebean;
 
 /*-
  * #%L
@@ -20,15 +20,14 @@ package act.db.ebean2;
  * #L%
  */
 
-import act.db.ebean2.util.EbeanDaoLoader;
-import org.osgl.inject.Module;
+import act.event.ActEvent;
+import io.ebean.config.ServerConfig;
 
-@SuppressWarnings("unused")
-public class EbeanModule extends Module {
-
-    @Override
-    protected void configure() {
-        registerGenericTypedBeanLoader(EbeanDao.class, new EbeanDaoLoader());
+/**
+ * The event triggered right before Ebean server is created
+ */
+public class PreEbeanCreation extends ActEvent<ServerConfig> {
+    public PreEbeanCreation(ServerConfig source) {
+        super(source);
     }
-
 }

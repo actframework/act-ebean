@@ -1,4 +1,4 @@
-package act.db.ebean2;
+package act.db.ebean;
 
 /*-
  * #%L
@@ -20,22 +20,15 @@ package act.db.ebean2;
  * #L%
  */
 
-import static act.app.event.SysEventId.DEPENDENCY_INJECTOR_PROVISIONED;
+import act.db.ebean.util.EbeanDaoLoader;
+import org.osgl.inject.Module;
 
-import act.event.ActEvent;
-import act.event.BindOn;
-import io.ebean.config.ServerConfig;
+@SuppressWarnings("unused")
+public class EbeanModule extends Module {
 
-/**
- * The event get triggered when {@link ServerConfig} is loaded and
- * before the {@link io.ebean.EbeanServer} is created.
- *
- * Application can use this event to do further configuration on
- * {@link ServerConfig}
- */
-@BindOn(DEPENDENCY_INJECTOR_PROVISIONED)
-public class EbeanConfigLoaded extends ActEvent<ServerConfig> {
-    public EbeanConfigLoaded(ServerConfig source) {
-        super(source);
+    @Override
+    protected void configure() {
+        registerGenericTypedBeanLoader(EbeanDao.class, new EbeanDaoLoader());
     }
+
 }

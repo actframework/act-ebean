@@ -1,4 +1,4 @@
-package act.db.ebean2.util;
+package act.db.ebean.util;
 
 /*-
  * #%L

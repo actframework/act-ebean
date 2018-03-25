@@ -1,4 +1,4 @@
-package act.db.ebean2;
+package act.db.ebean;
 
 /*-
  * #%L
@@ -20,14 +20,22 @@ package act.db.ebean2;
  * #L%
  */
 
+import static act.app.event.SysEventId.DEPENDENCY_INJECTOR_PROVISIONED;
+
 import act.event.ActEvent;
+import act.event.BindOn;
 import io.ebean.config.ServerConfig;
 
 /**
- * The event triggered right before Ebean server is created
+ * The event get triggered when {@link ServerConfig} is loaded and
+ * before the {@link io.ebean.EbeanServer} is created.
+ *
+ * Application can use this event to do further configuration on
+ * {@link ServerConfig}
  */
-public class PreEbeanCreation extends ActEvent<ServerConfig> {
-    public PreEbeanCreation(ServerConfig source) {
+@BindOn(DEPENDENCY_INJECTOR_PROVISIONED)
+public class EbeanConfigLoaded extends ActEvent<ServerConfig> {
+    public EbeanConfigLoaded(ServerConfig source) {
         super(source);
     }
 }

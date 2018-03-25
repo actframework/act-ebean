@@ -1,4 +1,4 @@
-package act.db.ebean2;
+package act.db.ebean;
 
 /*-
  * #%L
@@ -26,7 +26,7 @@ import act.Act;
 import act.app.App;
 import act.conf.AppConfigKey;
 import act.db.Dao;
-import act.db.ebean2.util.EbeanConfigAdaptor;
+import act.db.ebean.util.EbeanConfigAdaptor;
 import act.db.sql.DataSourceConfig;
 import act.db.sql.SqlDbService;
 import act.event.SysEventListenerBase;
