@@ -1,5 +1,11 @@
 # act-ebean2 CHANGELOG
 
+1.6.0 - 25/Mar/2018
+* rename to act-ebean
+* update act to 1.8.2
+* update act-sql-common to 1.3.2
+* update ebean to 11.15.1
+
 1.5.1 - 11/Mar/2018
 * update to act-1.8.1
 * update to act-sql-common-1.3.1

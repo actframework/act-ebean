@@ -642,4 +642,10 @@ public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODE
     public <D> DtoQuery<D> asDto(Class<D> aClass) {
         return q.asDto(aClass);
     }
+
+    @Override
+    public Query<MODEL_TYPE> setLabel(String s) {
+        q.setLabel(s);
+        return this;
+    }
 }

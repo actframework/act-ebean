@@ -27,6 +27,6 @@ public class VersionTest extends TestBase {
 
     @Test
     public void versionShallContainsEbean2() {
-        yes(EbeanPlugin.VERSION.toString().contains("ebean2"));
+        yes(EbeanPlugin.VERSION.toString().contains("ebean"));
     }
 }
