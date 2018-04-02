@@ -1,5 +1,9 @@
 # act-ebean2 CHANGELOG
 
+1.6.2 - 02/Mar/2018
+* update act to 1.8.5
+* update ebean to 11.15.3
+
 1.6.1 - 25/Mar/2018
 * rename package from `act.ebean2` to `act.ebean`
 
