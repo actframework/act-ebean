@@ -1,5 +1,8 @@
 # act-ebean CHANGELOG
 
+1.6.4 - 14/May/2018
+* java.lang.ClassCastException: java.lang.String cannot be cast to [C #22
+
 1.6.3 - 13/May/2018
 * update act to 1.8.8-RC4
 * Disable Ebean classpath search #21
