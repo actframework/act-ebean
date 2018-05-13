@@ -65,6 +65,7 @@ public class EbeanConfigAdaptor extends LogSupport {
             }
         }
 
+        config.setDisableClasspathSearch(true);
         return config;
     }
 

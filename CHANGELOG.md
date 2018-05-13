@@ -1,4 +1,9 @@
-# act-ebean2 CHANGELOG
+# act-ebean CHANGELOG
+
+1.6.3 - 13/May/2018
+* update act to 1.8.8-RC4
+* Disable Ebean classpath search #21
+* Register global mapping filter to avoid copying ebean enhanced fields #20
 
 1.6.2 - 02/Mar/2018
 * update act to 1.8.5
@@ -12,6 +17,10 @@
 * update act to 1.8.2
 * update act-sql-common to 1.3.2
 * update ebean to 11.15.1
+
+---------------------------------------
+
+Previous named act-ebean2
 
 1.5.1 - 11/Mar/2018
 * update to act-1.8.1

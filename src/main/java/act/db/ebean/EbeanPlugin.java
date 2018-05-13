@@ -32,6 +32,7 @@ import act.event.ActEventListenerBase;
 import act.inject.param.ParamValueLoaderService;
 import io.ebean.TxScope;
 import io.ebeaninternal.api.HelpScopeTrans;
+import org.osgl.OsglConfig;
 import osgl.version.Version;
 
 import java.util.EventObject;
@@ -40,6 +41,12 @@ import java.util.Map;
 public class EbeanPlugin extends DbPlugin {
 
     public static final Version VERSION = Version.of(EbeanPlugin.class);
+
+    @Override
+    public void register() {
+        super.register();
+        registerGlobalMappingFilter();
+    }
 
     @Override
     protected void applyTo(App app) {
@@ -69,7 +76,10 @@ public class EbeanPlugin extends DbPlugin {
     @Override
     public DbService initDbService(String id, App app, Map<String, String> conf) {
         ParamValueLoaderService.waiveFields("_ebean_intercept", "_ebean_identity");
-
         return new EbeanService(id, app, conf);
+    }
+
+    private void registerGlobalMappingFilter() {
+        OsglConfig.addGlobalMappingFilter("starts:_ebean_");
     }
 }
