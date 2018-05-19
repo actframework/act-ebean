@@ -1,7 +1,11 @@
 # act-ebean CHANGELOG
 
+1.6.5 - 19/May/2018
+* update act to 1.8.8-RC5
+* update act-sql-common to 1.3.4
+* update ebean to 11.15.9
+
 1.6.4 - 14/May/2018
-* update act-sql-common to 1.3.4-SNAPSHOT
 * update ebean to 11.15.8
 * java.lang.ClassCastException: java.lang.String cannot be cast to [C #22
 
