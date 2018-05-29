@@ -21,24 +21,17 @@ package act.db.ebean;
  */
 
 import act.app.App;
-import act.asm.Opcodes;
-import act.db.DbPlugin;
 import act.db.DbService;
-import act.db.sql.tx.TxError;
-import act.db.sql.tx.TxInfo;
-import act.db.sql.tx.TxStart;
-import act.db.sql.tx.TxStop;
-import act.event.ActEventListenerBase;
+import act.db.sql.SqlDbPlugin;
 import act.inject.param.ParamValueLoaderService;
-import io.ebean.TxScope;
-import io.ebeaninternal.api.HelpScopeTrans;
 import org.osgl.OsglConfig;
 import osgl.version.Version;
+import osgl.version.Versioned;
 
-import java.util.EventObject;
 import java.util.Map;
 
-public class EbeanPlugin extends DbPlugin {
+@Versioned
+public class EbeanPlugin extends SqlDbPlugin {
 
     public static final Version VERSION = Version.of(EbeanPlugin.class);
 
@@ -46,31 +39,6 @@ public class EbeanPlugin extends DbPlugin {
     public void register() {
         super.register();
         registerGlobalMappingFilter();
-    }
-
-    @Override
-    protected void applyTo(App app) {
-        super.applyTo(app);
-        app.eventBus().bind(TxStart.class, new ActEventListenerBase<TxStart>() {
-            @Override
-            public void on(TxStart eventObject) {
-                TxInfo info = eventObject.source();
-                TxScope scope = new TxScope();
-                scope.setReadOnly(info.readOnly());
-                HelpScopeTrans.enter(scope);
-            }
-        }).bind(TxStop.class, new ActEventListenerBase() {
-            @Override
-            public void on(EventObject eventObject) throws Exception {
-                HelpScopeTrans.exit(null, 1);
-            }
-        }).bind(TxError.class, new ActEventListenerBase<TxError>() {
-            @Override
-            public void on(TxError eventObject) throws Exception {
-                Throwable cause = eventObject.source();
-                HelpScopeTrans.exit(cause, Opcodes.ATHROW);
-            }
-        });
     }
 
     @Override

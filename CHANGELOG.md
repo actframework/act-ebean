@@ -1,5 +1,10 @@
 # act-ebean CHANGELOG
 
+1.7.0 - 29/May/2018
+* update act to 1.8.8-RC8
+* update act-sql-common to 1.4.0
+* update ebean to 11.15.10
+
 1.6.5 - 19/May/2018
 * update act to 1.8.8-RC5
 * update act-sql-common to 1.3.4

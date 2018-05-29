@@ -73,6 +73,7 @@ public class EbeanConfigAdaptor extends LogSupport {
         Properties properties = new Properties();
         properties.putAll(actConfig.customProperties);
         properties.put("isolationLevel", adaptIsolationLevel(actConfig.isolationLevel));
+
         DataSourceConfig config = new DataSourceConfig();
         config.loadSettings(properties, svc.id());
 
@@ -81,22 +82,11 @@ public class EbeanConfigAdaptor extends LogSupport {
         config.setUsername(actConfig.username);
         config.setPassword(actConfig.password);
         config.setAutoCommit(actConfig.autoCommit);
+        config.setReadOnly(actConfig.readOnly);
+        config.setIsolationLevel(actConfig.isolationLevel);
 
         config.setMinConnections(actConfig.minConnections);
         config.setMaxConnections(actConfig.maxConnections);
-        config.setHeartbeatSql(actConfig.heartbeatSql);
-        config.setIsolationLevel(actConfig.isolationLevel);
-        config.setMaxAgeMinutes(actConfig.maxAgeMinutes);
-        config.setMaxInactiveTimeSecs(actConfig.maxInactiveTimeSecs);
-        config.setHeartbeatFreqSecs(actConfig.heartbeatFreqSecs);
-        config.setCstmtCacheSize(actConfig.cstmtCacheSize);
-        config.setPstmtCacheSize(actConfig.pstmtCacheSize);
-        config.setTrimPoolFreqSecs(actConfig.trimPoolFreqSecs);
-        config.setWaitTimeoutMillis(actConfig.waitTimeoutMillis);
-        config.setLeakTimeMinutes(actConfig.leakTimeMinutes);
-        config.setPoolListener(actConfig.poolListener);
-        config.setOffline(actConfig.offline);
-        config.setCaptureStackTrace(actConfig.captureStackTrace);
 
         return config;
     }
