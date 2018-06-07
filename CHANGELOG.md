@@ -5,6 +5,7 @@
 * update act-sql-common to 1.4.1
 * update ebean to 11.17.1
 * Prevent double DDL generation when creating readOnly ebean server #24
+* Add `!=` operator #18
 
 1.7.0 - 29/May/2018
 * update act to 1.8.8-RC8
