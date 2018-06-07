@@ -35,17 +35,17 @@
   <parent>
     <groupId>org.actframework</groupId>
     <artifactId>parent</artifactId>
-    <version>1.8.8-RC8</version>
+    <version>1.8.8-RC9</version>
   </parent>
 
   <properties>
     <scm.url>git@github.com:actframework/act-ebean2.git</scm.url>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <ebean.version>11.15.10</ebean.version>
+    <ebean.version>11.17.1</ebean.version>
     <ebean-agent.version>11.11.1</ebean-agent.version>
     <ebean-agent-loader.version>2.1.2</ebean-agent-loader.version>
-    <act-sql-common.version>1.4.0</act-sql-common.version>
+    <act-sql-common.version>1.4.1</act-sql-common.version>
   </properties>
 
   <scm>
