@@ -390,6 +390,13 @@ public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODE
     }
 
     @Override
+    public Query<MODEL_TYPE> select(FetchGroup<MODEL_TYPE> fetchGroup) {
+        q.select(fetchGroup);
+        qReadOnly.select(fetchGroup);
+        return this;
+    }
+
+    @Override
     public EbeanQuery<MODEL_TYPE> fetch(String path, String fetchProperties) {
         q.fetch(path, fetchProperties);
         qReadOnly.fetch(path, fetchProperties);

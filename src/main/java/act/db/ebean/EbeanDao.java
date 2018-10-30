@@ -23,32 +23,26 @@ package act.db.ebean;
 import static act.Act.app;
 
 import act.app.DbServiceManager;
-import act.db.DB;
-import act.db.DaoBase;
-import act.db.DbService;
+import act.db.*;
 import act.db.Model;
 import act.db.sql.tx.TxContext;
-import act.inject.param.NoBind;
 import act.util.General;
+import act.util.Stateless;
 import io.ebean.*;
 import io.ebeaninternal.api.SpiEbeanServer;
 import org.osgl.$;
 import org.osgl.logging.L;
 import org.osgl.logging.Logger;
-import org.osgl.util.C;
-import org.osgl.util.E;
-import org.osgl.util.S;
+import org.osgl.util.*;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import javax.persistence.Id;
 import javax.sql.DataSource;
 
 @General
-@NoBind
+@Stateless
 public class EbeanDao<ID_TYPE, MODEL_TYPE> extends DaoBase<ID_TYPE, MODEL_TYPE, EbeanQuery<MODEL_TYPE>> {
 
     private static final Logger logger = L.get(EbeanDao.class);

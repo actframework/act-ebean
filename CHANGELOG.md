@@ -1,5 +1,10 @@
 # act-ebean CHANGELOG
 
+1.7.3 - 30/Oct/2018
+* update act to 1.8.8
+* update act-sql-common to 1.4.3
+* Error connecting to sqlserver2008 #18
+
 1.7.2 - 19/Jun/2018
 * update act to 1.8.8-RC10
 * update act-sql-common to 1.4.2
