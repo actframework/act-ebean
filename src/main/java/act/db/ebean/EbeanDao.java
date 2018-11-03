@@ -42,19 +42,18 @@ import javax.persistence.Id;
 import javax.sql.DataSource;
 
 @General
-@Stateless
 public class EbeanDao<ID_TYPE, MODEL_TYPE> extends DaoBase<ID_TYPE, MODEL_TYPE, EbeanQuery<MODEL_TYPE>> {
 
     private static final Logger logger = L.get(EbeanDao.class);
 
-    private volatile EbeanServer ebean;
-    private volatile EbeanServer ebeanReadOnly;
-    private volatile EbeanService dbSvc;
-    private volatile DataSource ds;
-    private volatile DataSource dsReadOnly;
-    private String tableName;
-    private Field idField = null;
-    private List<QueryIterator> queryIterators = C.newList();
+    @Stateless private volatile EbeanServer ebean;
+    @Stateless private volatile EbeanServer ebeanReadOnly;
+    @Stateless private volatile EbeanService dbSvc;
+    @Stateless private volatile DataSource ds;
+    @Stateless private volatile DataSource dsReadOnly;
+    @Stateless private String tableName;
+    @Stateless private Field idField = null;
+    @Stateless private List<QueryIterator> queryIterators = C.newList();
 
     EbeanDao(EbeanService service) {
         init(modelType());
