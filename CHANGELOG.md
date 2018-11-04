@@ -2,6 +2,8 @@
 
 1.7.4
 * Revert changes that makes `JPADao` be `@Stateless` #25
+* update act to 1.8.9
+* update act-sql-common to 1.4.4
 
 1.7.3 - 30/Oct/2018
 * update act to 1.8.8
