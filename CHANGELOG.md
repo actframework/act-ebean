@@ -1,5 +1,8 @@
 # act-ebean CHANGELOG
 
+1.7.5
+* `EbeanQuery.first()` issue #28
+
 1.7.4
 * Revert changes that makes `JPADao` be `@Stateless` #25
 * update act to 1.8.9
