@@ -1,9 +1,10 @@
 # act-ebean CHANGELOG
 
-1.7.5
+1.7.5 - 20/Nov/2018
+* update act to 1.8.12
 * `EbeanQuery.first()` issue #28
 
-1.7.4
+1.7.4 - 04/Nov/2018
 * Revert changes that makes `JPADao` be `@Stateless` #25
 * update act to 1.8.9
 * update act-sql-common to 1.4.4
