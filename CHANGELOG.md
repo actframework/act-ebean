@@ -1,5 +1,9 @@
 # act-ebean CHANGELOG
 
+1.7.6 - 04/Feb/2019
+* update act to 1.8.18
+* update ebean to 11.33.3
+
 1.7.5 - 20/Nov/2018
 * update act to 1.8.12
 * `EbeanQuery.first()` issue #28

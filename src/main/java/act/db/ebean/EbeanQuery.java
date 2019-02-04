@@ -700,13 +700,6 @@ public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODE
     }
 
     @Override
-    @Deprecated
-    public EbeanQuery<MODEL_TYPE> setForUpdate(boolean forUpdate) {
-        q.setForUpdate(forUpdate);
-        return this;
-    }
-
-    @Override
     public boolean isForUpdate() {
         return q.isForUpdate();
     }
@@ -738,5 +731,48 @@ public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODE
         q.setLabel(s);
         qReadOnly.setLabel(s);
         return this;
+    }
+
+    @Override
+    public UpdateQuery<MODEL_TYPE> asUpdate() {
+        return q.asUpdate();
+    }
+
+    @Override
+    public Query<MODEL_TYPE> setAllowLoadErrors() {
+        q.setAllowLoadErrors();
+        return this;
+    }
+
+    @Override
+    public boolean exists() {
+        return q.exists();
+    }
+
+    @Override
+    public int delete(Transaction transaction) {
+        return q.delete(transaction);
+    }
+
+    @Override
+    public int update(Transaction transaction) {
+        return q.update(transaction);
+    }
+
+    @Override
+    public Query<MODEL_TYPE> setBaseTable(String s) {
+        q.setBaseTable(s);
+        return this;
+    }
+
+    @Override
+    public Query<MODEL_TYPE> setInheritType(Class<? extends MODEL_TYPE> aClass) {
+        q.setInheritType(aClass);
+        return this;
+    }
+
+    @Override
+    public Class<? extends MODEL_TYPE> getInheritType() {
+        return q.getInheritType();
     }
 }

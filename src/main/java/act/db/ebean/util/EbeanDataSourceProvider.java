@@ -20,14 +20,11 @@ package act.db.ebean.util;
  * #L%
  */
 
-import act.db.sql.DataSourceConfig;
-import act.db.sql.DataSourceProvider;
-import act.db.sql.SqlDbService;
-import act.db.sql.SqlDbServiceConfig;
+import act.db.sql.*;
 import act.db.sql.monitor.DataSourceStatus;
 import io.ebean.config.ServerConfig;
-import org.avaje.datasource.DataSourceAlertFactory;
-import org.avaje.datasource.DataSourceFactory;
+import io.ebean.datasource.DataSourceAlertFactory;
+import io.ebean.datasource.DataSourceFactory;
 
 import java.util.Map;
 import javax.sql.DataSource;
@@ -52,7 +49,7 @@ public class EbeanDataSourceProvider extends DataSourceProvider {
         }
 
         DataSourceAlertFactory alertFactory = ebeanConfig.service(DataSourceAlertFactory.class);
-        org.avaje.datasource.DataSourceConfig dsConfig = ebeanConfig.getDataSourceConfig();
+        io.ebean.datasource.DataSourceConfig dsConfig = ebeanConfig.getDataSourceConfig();
         if (alertFactory != null) {
             dsConfig.setAlert(alertFactory.createAlert());
         }

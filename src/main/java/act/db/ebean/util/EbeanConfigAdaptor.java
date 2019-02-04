@@ -25,11 +25,8 @@ import static act.db.sql.util.NamingConvention.Default.MATCHING;
 import act.db.sql.SqlDbService;
 import act.db.sql.SqlDbServiceConfig;
 import act.util.LogSupport;
-import io.ebean.config.MatchingNamingConvention;
-import io.ebean.config.NamingConvention;
-import io.ebean.config.ServerConfig;
-import io.ebean.config.UnderscoreNamingConvention;
-import org.avaje.datasource.DataSourceConfig;
+import io.ebean.config.*;
+import io.ebean.datasource.DataSourceConfig;
 import org.osgl.util.S;
 
 import java.sql.Connection;

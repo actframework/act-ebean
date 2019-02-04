@@ -21,12 +21,10 @@ package act.db.ebean.util;
  */
 
 import io.ebean.config.ServerConfig;
-import org.avaje.datasource.DataSourcePool;
+import io.ebean.datasource.DataSourcePool;
 
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.SQLFeatureNotSupportedException;
+import java.sql.*;
 import java.util.logging.Logger;
 import javax.sql.DataSource;
 
