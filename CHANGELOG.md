@@ -1,5 +1,10 @@
 # act-ebean CHANGELOG
 
+
+1.7.7 - 20/Apr/2019
+* update act to 1.8.20
+* update ebean to 11.37.1
+
 1.7.6 - 04/Feb/2019
 * update act to 1.8.18
 * update ebean to 11.33.3

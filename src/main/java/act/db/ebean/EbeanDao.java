@@ -24,6 +24,7 @@ import static act.Act.app;
 
 import act.app.DbServiceManager;
 import act.db.*;
+import act.db.DB;
 import act.db.Model;
 import act.db.sql.tx.TxContext;
 import act.util.General;
