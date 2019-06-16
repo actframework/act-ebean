@@ -29,6 +29,7 @@ import org.osgl.util.Generics;
 import org.osgl.util.S;
 
 import java.lang.reflect.Type;
+import java.sql.Connection;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
@@ -774,5 +775,17 @@ public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODE
     @Override
     public Class<? extends MODEL_TYPE> getInheritType() {
         return q.getInheritType();
+    }
+
+    @Override
+    public Query<MODEL_TYPE> usingTransaction(Transaction transaction) {
+        q.usingTransaction(transaction);
+        return this;
+    }
+
+    @Override
+    public Query<MODEL_TYPE> usingConnection(Connection connection) {
+        q.usingConnection(connection);
+        return this;
     }
 }

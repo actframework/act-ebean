@@ -1,5 +1,9 @@
 # act-ebean CHANGELOG
 
+1.7.8 - 16/Jun/2019
+* update to act-1.8.23
+* update to act-sql-common-1.4.6
+
 
 1.7.7 - 20/Apr/2019
 * update act to 1.8.20
@@ -17,6 +21,7 @@
 * Revert changes that makes `JPADao` be `@Stateless` #25
 * update act to 1.8.9
 * update act-sql-common to 1.4.4
+* update ebean to 11.39.1
 
 1.7.3 - 30/Oct/2018
 * update act to 1.8.8
