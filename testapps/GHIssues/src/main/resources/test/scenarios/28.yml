@@ -1,0 +1,30 @@
+Scenario(28):
+  description: "[GH28] first() issue"
+  interactions:
+  - description: create first test record
+    request:
+      post: 28
+      params:
+        name: one
+    response:
+      json:
+        id:
+          - exists: true
+    cache:
+      id1: id
+  - description: create second test record
+    request:
+      post: 28
+      params:
+        name: two
+    response:
+      json:
+        id:
+        - exists: true
+  - description: test
+    request:
+      get: 28/first
+    response:
+      json:
+        id: ${id1}
+        name: one

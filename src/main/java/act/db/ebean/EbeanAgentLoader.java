@@ -76,14 +76,17 @@ public class EbeanAgentLoader extends AgentLoader {
     /**
      * Load an agent providing the full file path.
      */
-    public static void loadAgent(String jarFilePath) {
-        loadAgent(jarFilePath, "");
+    public static boolean loadAgent(String jarFilePath) {
+        return loadAgent(jarFilePath, "");
     }
 
     /**
      * Load an agent providing the full file path with parameters.
      */
-    public static void loadAgent(String jarFilePath, String params) {
+    public static boolean loadAgent(String jarFilePath, String params) {
+        if (loaded.contains(jarFilePath)) {
+            return false;
+        }
         try {
 
             String pid = Env.PID.get();
@@ -111,6 +114,7 @@ public class EbeanAgentLoader extends AgentLoader {
                 });
             }
             vm.detach();
+            return true;
 
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -120,8 +124,8 @@ public class EbeanAgentLoader extends AgentLoader {
     /**
      * Load the agent from the classpath using its name.
      */
-    public static void loadAgentFromClasspath(String agentName) {
-        loadAgentFromClasspath(agentName, "");
+    public static boolean loadAgentFromClasspath(String agentName) {
+        return loadAgentFromClasspath(agentName, "");
     }
 
     /**
