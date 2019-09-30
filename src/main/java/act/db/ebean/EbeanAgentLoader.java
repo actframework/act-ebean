@@ -108,14 +108,15 @@ public class EbeanAgentLoader extends AgentLoader {
                 }
             } finally {
                 // ensure ebean EnhanceContext logout set to dump output
-                Act.jobManager().on(SysEventId.CLASS_LOADER_INITIALIZED, () -> {
+                Act.jobManager().on(SysEventId.CLASS_LOADER_INITIALIZED,
+                        S.buffer("EbeanAgentLoader - clean up for ").append(jarFilePath).toString(),
+                        () -> {
                     System.setOut(ps);
                     IO.close(os);
                 });
             }
             vm.detach();
             return true;
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

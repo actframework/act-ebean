@@ -35,7 +35,7 @@
   <parent>
     <groupId>org.actframework</groupId>
     <artifactId>parent</artifactId>
-    <version>1.8.25</version>
+    <version>1.8.28</version>
   </parent>
 
   <properties>
@@ -45,7 +45,7 @@
     <ebean.version>11.40.1</ebean.version>
     <ebean-agent.version>11.40.1</ebean-agent.version>
     <ebean-agent-loader.version>3.0.1</ebean-agent-loader.version>
-    <act-sql-common.version>1.5.0</act-sql-common.version>
+    <act-sql-common.version>1.5.1</act-sql-common.version>
   </properties>
 
   <scm>

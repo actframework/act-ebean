@@ -1,5 +1,10 @@
 # act-ebean CHANGELOG
 
+1.7.10 - 30/Sep/2018
+* update to act-1.8.28
+* update to act-sql-common-1.5.1
+* Tune jobId for all jobs
+
 1.7.9 - 03/Jul/2019
 * update to act-1.8.25
 * update to act-sql-common-1.5.0
