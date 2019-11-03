@@ -1,5 +1,10 @@
 # act-ebean CHANGELOG
 
+1.8.0 - 03/Nov/2019
+* update to act-1.8.29
+* update EbeanDao - add `processLikeValue` method
+* update to ebean-11.45.1
+
 1.7.10 - 30/Sep/2018
 * update to act-1.8.28
 * update to act-sql-common-1.5.1

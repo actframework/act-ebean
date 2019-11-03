@@ -37,6 +37,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODEL_TYPE, EbeanQuery<MODEL_TYPE>> {
 
@@ -788,4 +789,17 @@ public class EbeanQuery<MODEL_TYPE> implements Query<MODEL_TYPE>, Dao.Query<MODE
         q.usingConnection(connection);
         return this;
     }
+
+    @Override
+    public Query<MODEL_TYPE> fetchCache(String path, String fetchProperties) {
+        q.fetchCache(path, fetchProperties);
+        return this;
+    }
+
+    @Override
+    public Query<MODEL_TYPE> fetchCache(String path) {
+        q.fetchCache(path);
+        return this;
+    }
+
 }
