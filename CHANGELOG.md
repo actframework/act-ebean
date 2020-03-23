@@ -1,5 +1,8 @@
 # act-ebean CHANGELOG
 
+1.8.1
+* Allow app to define customised ebean IdGenerator #22
+
 1.8.0 - 03/Nov/2019
 * update to act-1.8.29
 * update EbeanDao - add `processLikeValue` method
