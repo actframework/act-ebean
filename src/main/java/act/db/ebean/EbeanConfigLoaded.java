@@ -27,12 +27,17 @@ import act.event.BindOn;
 import io.ebean.config.ServerConfig;
 
 /**
+ * NOTE this class is deprecated. Application that needs to configure
+ * {@link ServerConfig Ebean ServerConfig} shall implement
+ * {@link EbeanConfigurator} interface
+ *
  * The event get triggered when {@link ServerConfig} is loaded and
  * before the {@link io.ebean.EbeanServer} is created.
  *
  * Application can use this event to do further configuration on
  * {@link ServerConfig}
  */
+@Deprecated
 @BindOn(DEPENDENCY_INJECTOR_PROVISIONED)
 public class EbeanConfigLoaded extends ActEvent<ServerConfig> {
     public EbeanConfigLoaded(ServerConfig source) {

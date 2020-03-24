@@ -1,6 +1,7 @@
 # act-ebean CHANGELOG
 
 1.8.1
+* Create new mechanism for app to configure ServerConfig #33
 * Register app defined ebean IdGenerator #32
 
 1.8.0 - 03/Nov/2019
